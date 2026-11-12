@@ -11,6 +11,7 @@ export const PlaceholderEditorModal: React.FC = () => {
   const [email, setEmail] = useState(profile.email);
   const [linkedinUrl, setLinkedinUrl] = useState(profile.linkedinUrl);
   const [location, setLocation] = useState(profile.location);
+  const [photoUrl, setPhotoUrl] = useState(profile.photoUrl || '/assets/aistudio/WhatsApp_Image_2026-11-12_at_2.11.11_PM_6df4f1e9.jpeg');
 
   if (!isEditModalOpen) return null;
 
@@ -23,6 +24,7 @@ export const PlaceholderEditorModal: React.FC = () => {
       email,
       linkedinUrl,
       location,
+      photoUrl,
     });
     closeEditModal();
   };
@@ -35,6 +37,7 @@ export const PlaceholderEditorModal: React.FC = () => {
     setEmail('nithishpesaru7@gmail.com');
     setLinkedinUrl('https://linkedin.com/in/[your-linkedin-profile]');
     setLocation('[Your City / State, India]');
+    setPhotoUrl('/assets/aistudio/WhatsApp_Image_2026-11-12_at_2.11.11_PM_6df4f1e9.jpeg');
   };
 
   return (
@@ -144,6 +147,51 @@ export const PlaceholderEditorModal: React.FC = () => {
               placeholder="e.g. Hyderabad, India"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500"
             />
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <label className="text-xs font-semibold text-slate-300">
+                Profile Photo Path / URL (Optional)
+              </label>
+              {photoUrl && (
+                <button
+                  type="button"
+                  onClick={() => setPhotoUrl('')}
+                  className="text-[11px] text-rose-400 hover:text-rose-300 underline"
+                >
+                  Remove Photo
+                </button>
+              )}
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl overflow-hidden bg-slate-900 border border-slate-700 shrink-0 flex items-center justify-center">
+                {photoUrl ? (
+                  <img
+                    src={photoUrl}
+                    alt="Profile Preview"
+                    className="w-full h-full object-cover object-center"
+                    onError={() => setPhotoUrl('')}
+                  />
+                ) : (
+                  <span className="text-xs font-mono font-bold text-blue-400 bg-blue-950/60 w-full h-full flex items-center justify-center">
+                    NP
+                  </span>
+                )}
+              </div>
+              <div className="flex-1">
+                <input
+                  type="text"
+                  value={photoUrl}
+                  onChange={(e) => setPhotoUrl(e.target.value)}
+                  placeholder="Paste image URL or leave blank for monogram..."
+                  className="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-blue-500 font-mono"
+                />
+                <span className="text-[10px] text-slate-500 mt-0.5 block">
+                  {photoUrl ? 'Custom photo active' : 'Photo removed — displaying clean developer monogram badge'}
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Action buttons */}

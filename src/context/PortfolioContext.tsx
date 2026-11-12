@@ -20,8 +20,8 @@ interface PortfolioContextType {
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
 
-const STORAGE_KEY = 'nithish_portfolio_profile_v1';
-const MILESTONES_STORAGE_KEY = 'nithish_portfolio_milestones_v1';
+const STORAGE_KEY = 'nithish_portfolio_profile_v5';
+const MILESTONES_STORAGE_KEY = 'nithish_portfolio_milestones_v5';
 
 export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [profile, setProfile] = useState<UserProfile>(() => {

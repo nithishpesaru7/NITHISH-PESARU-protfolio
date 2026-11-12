@@ -12,6 +12,7 @@ export const initialProfile: UserProfile = {
   githubUrl: 'https://github.com/nithishpesaru7',
   linkedinUrl: 'https://linkedin.com/in/[your-linkedin-profile]',
   location: '[Your City / State, India]',
+  photoUrl: '/assets/aistudio/WhatsApp_Image_2026-11-12_at_2.11.11_PM_6df4f1e9.jpeg',
   bio: 'I am a first-year Computer Science undergraduate passionate about building the next generation of intelligent software. Currently immersing myself in foundational Python programming, algorithmic problem solving, core web technologies, and the mathematical and conceptual underpinnings of artificial intelligence and machine learning. My objective is to evolve into a proficient AI Engineer capable of deploying reliable, production-grade intelligent systems.',
   focusAreas: [
     'Python & Foundational Data Structures',

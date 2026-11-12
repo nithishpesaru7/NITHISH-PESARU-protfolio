@@ -98,49 +98,75 @@ export const Hero: React.FC = () => {
 
               {/* Glass Frame */}
               <div className="relative glass-panel rounded-2xl overflow-hidden border border-slate-700/60 p-3 sm:p-4 bg-[#0a0f20]/90">
-                <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-800">
-                  <img
-                    src="/src/assets/images/hero_student_developer_1794418628944.jpg"
-                    alt="Nithish Pesaru - Aspiring AI Engineer & Computer Science Student"
-                    className="w-full h-full object-cover object-top"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      // Fallback container in case image loading fails
-                      const target = e.currentTarget;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.classList.add('flex', 'flex-col', 'items-center', 'justify-center', 'p-6', 'text-center', 'bg-gradient-to-b', 'from-blue-950/60', 'to-slate-900');
-                        parent.innerHTML = `
-                          <div class="w-16 h-16 rounded-2xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4 font-mono text-xl font-bold">NP</div>
-                          <div class="text-white font-bold text-lg">${profile.name}</div>
-                          <div class="text-xs text-blue-400 mt-1">First-Year B.Tech CSE</div>
-                        `;
-                      }
-                    }}
-                  />
-                  
-                  {/* Subtle lower gradient overlay for text readability */}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#060913] via-[#060913]/60 to-transparent p-4 flex flex-col justify-end">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-white font-semibold text-sm sm:text-base flex items-center gap-1.5">
-                          <span>{profile.name}</span>
-                          <span className="text-[10px] text-blue-400 font-mono font-normal bg-blue-950/60 border border-blue-800/40 px-1.5 py-0.5 rounded">B.Tech 1st Yr</span>
+                <div className="relative aspect-[4/5] sm:aspect-square w-full rounded-xl overflow-hidden bg-[#070b18] border border-slate-800 flex flex-col justify-between p-6">
+                  {profile.photoUrl ? (
+                    <>
+                      <img
+                        src={profile.photoUrl}
+                        alt="Nithish Pesaru - Aspiring AI Engineer & Computer Science Student"
+                        className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-transform duration-500 hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#060913] via-[#060913]/60 to-transparent p-4 flex flex-col justify-end">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="text-white font-semibold text-sm sm:text-base flex items-center gap-1.5">
+                              <span>{profile.name}</span>
+                              <span className="text-[10px] text-blue-400 font-mono font-normal bg-blue-950/60 border border-blue-800/40 px-1.5 py-0.5 rounded">B.Tech 1st Yr</span>
+                            </div>
+                            <p className="text-xs text-slate-400 mt-0.5">Focus: Python · AI/ML Foundations</p>
+                          </div>
+                          <a
+                            href={profile.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-white transition-colors"
+                            title="GitHub Profile"
+                          >
+                            <Github className="w-4 h-4" />
+                          </a>
                         </div>
-                        <p className="text-xs text-slate-400 mt-0.5">Focus: Python · AI/ML Foundations</p>
                       </div>
-                      <a
-                        href={profile.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-200 hover:text-white transition-colors"
-                        title="GitHub Profile"
-                      >
-                        <Github className="w-4 h-4" />
-                      </a>
+                    </>
+                  ) : (
+                    /* High-Tech Developer Avatar & Monogram Placeholder */
+                    <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto py-4 space-y-4">
+                      {/* Ambient glow behind avatar */}
+                      <div className="relative">
+                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl blur-md opacity-40 animate-pulse" />
+                        <div className="relative w-24 h-24 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-3xl font-mono font-bold shadow-xl border border-white/20">
+                          NP
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <h3 className="text-xl font-bold text-white tracking-tight">
+                          {profile.name}
+                        </h3>
+                        <p className="text-xs text-blue-400 font-medium">
+                          Aspiring AI Engineer · 1st-Year B.Tech CSE
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] font-mono text-slate-300 pt-1">
+                        <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Python</span>
+                        <span className="text-slate-600">·</span>
+                        <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Algorithms</span>
+                        <span className="text-slate-600">·</span>
+                        <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-purple-300">GenAI</span>
+                      </div>
+
+                      <div className="pt-2">
+                        <button
+                          onClick={openEditModal}
+                          className="text-[11px] text-slate-400 hover:text-blue-300 underline underline-offset-4 transition-colors flex items-center gap-1 mx-auto"
+                        >
+                          <Edit3 className="w-3 h-3" />
+                          <span>Add Photo / Edit Details</span>
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Status Bar inside card */}

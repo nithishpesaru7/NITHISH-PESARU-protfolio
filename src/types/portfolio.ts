@@ -12,6 +12,7 @@ export interface UserProfile {
   githubUrl: string;
   linkedinUrl: string;
   location: string;
+  photoUrl?: string;
   bio: string;
   focusAreas: string[];
   careerAmbitions: string[];
